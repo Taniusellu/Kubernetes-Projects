@@ -33,6 +33,6 @@ This example CronJob manifest prints the current time and a hello message every 
 Job > Pod > generate-keys(100)      - one time job [oneshot-job.yaml]
 
 
-
+<img width="583" alt="Screenshot_1567" src="https://user-images.githubusercontent.com/13994900/87060752-81026e80-c1d0-11ea-8a7a-d9264198a626.png">
 
 
