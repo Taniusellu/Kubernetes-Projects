@@ -1,6 +1,7 @@
 Static Pod 
 -
 Location for static pod : cd /etc/kubernetes/manifests/
+
 check kubelet status : systemctl status kubelet
 
 Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them. Unlike Pods that are managed 
