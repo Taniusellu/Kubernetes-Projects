@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod          #which resource you are planning to create
+metadata: 
+  name: kuard-pod-name2
+spec:
+  containers:
+  - image: gcr.io/kuard-demo/kuard-amd64:1         # tags to an image  :1
+    name: kuard-container-name
+    ports:            # specify ports you need
+    - containerPort: 8080
+      protocol: TCP 
+      name: web       # name of your port
+
+
