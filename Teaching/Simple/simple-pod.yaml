@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-pod-name
+spec:
+  containers:
+  - image: centos
+    name: centos-container-name
+    stdin: true
+    tty: true 
+  - image: nginx 
+    name: nginx-container-name
