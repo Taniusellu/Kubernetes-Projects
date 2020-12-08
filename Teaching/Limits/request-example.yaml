@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    name: new-label
+  name: replicaset-name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: label-1
+  template:
+    metadata:
+      labels:
+        app: label-1
+    spec:
+      containers:
+      - image: nginx:1.13
+        name: my-new-container
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+          # Define how much CPU to request
+        resources:
+          requests:
+            cpu: 500m 
+
