@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: kuard-pod-hostpath
+  name: kuard-pod-hostpath
+spec:
+  nodeSelector:
+    hostpath-node: app-data   # label should be attached to the node
+  volumes:
+  - name: "kuard-data"        #volume name
+    hostPath:
+      path: "/app-data"
+  containers:
+  - image: gcr.io/kuar-demo/kuard-amd64:1
+    name: kuard
+    volumeMounts:         #mount path
+    - mountPath: "/data"    # it will be amounted unde /data
+      name: "kuard-data"
+    ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
