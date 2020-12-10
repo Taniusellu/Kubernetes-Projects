@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: test-service1
+          servicePort: 80
+      - path: /test #when i will access this, will show something else for me into brower  http://tanea.com/test
+        backend:
+          serviceName: test-service2
+          servicePort: 80
