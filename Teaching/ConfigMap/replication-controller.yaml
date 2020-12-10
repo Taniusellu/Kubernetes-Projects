@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: my-replication-controller
+spec:
+  replicas: 3   #will create 3 pods
+  selector:     # it's gonna choose pods by labels, both part (rc and pod must match the labels)
+    app: nginx-rc-pod
+  template:      # it will create the pod
+    metadata: 
+      labels:
+        app: nginx-rc-pod
+    spec:       #creating ocntainers for pod
+      containers:
+      - image: nginx
+        name: cont-rc
