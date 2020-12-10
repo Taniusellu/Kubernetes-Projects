@@ -24,7 +24,7 @@ spec:
         env:
           # Test, use secret in prod
         - name: MYSQL_ROOT_PASSWORD
-          value: MyV3ryS3curePa55
+          value: #atache pass
         livenessProbe:
           tcpSocket:   #check if port 3306 is working, ifnot will restart the pod
             port: 3306
