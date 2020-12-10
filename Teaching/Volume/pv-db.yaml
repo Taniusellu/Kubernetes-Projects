@@ -13,7 +13,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    server: 172.18.0.1
+    server: #use   ifconfig take ip and attache your server ip
     path: /share
 
 

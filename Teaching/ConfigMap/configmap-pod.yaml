@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-configmap-pod
+  labels:
+    my-app: configmap-pod
+spec:
+  containers:
+  - image: nginx
+    name: my-pod
+    env:
+    - name: PROXY_STATUS
+      valueFrom:
+        configMapKeyRef:
+          name: nginx-config
+          key: proxy-staus
+    - name: PROXY_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: nginx-config
+          key: proxy-port
+    volumeMounts:
+    - name: config-volume
+      mountPath: /my-conf
+      subPath: nginx-proxy.conf
+
+  volumes:
+  - name: config-volume
+    configMap:
+      name: nginx-config
