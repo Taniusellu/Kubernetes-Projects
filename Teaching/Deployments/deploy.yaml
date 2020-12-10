@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-app-deploy
+  name: web-app-deploy
+spec:
+  replicas: 1
+  #
+  strategy:
+    type: RollingUpdate   #rolling update
+    rollingUpdate:      # how do i want to manage the proccess
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: web-app-deploy
+  template:
+    metadata:
+      labels:
+        app: web-app-deploy
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
