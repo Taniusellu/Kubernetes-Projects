@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: db-pv
+  labels:
+    volume: db-pv
+spec:
+  accessModes:
+  - ReadWriteOnce  
+  - ReadOnlyMany
+  storageClassName: nfs
+  persistentVolumeReclaimPolicy: Retain
+  capacity:
+    storage: 1Gi
+  nfs:
+    server: 172.18.0.1
+    path: /share
+
+
+# Access Modes:
+# - ReadWriteOnce(RWO) - can be mounted as rw by one node only
+# - ReadOnlyMany(ROX) - can be mounted as ro by many nodes
+# - ReadWriteMany(RWX) - can be mounted rw by many nodes

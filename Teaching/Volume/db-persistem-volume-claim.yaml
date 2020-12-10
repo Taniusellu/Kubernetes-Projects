@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-pvc
+spec:
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs   #should match with the persistent volume
+  accessModes:
+  - ReadWriteOnce  # should match with the persistent volume
+  selector:             
+    matchLabels:
+      volume: db-pv  # search for pv by this label
