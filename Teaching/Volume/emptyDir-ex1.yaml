@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortune-pod
+  labels:
+   name: fortune-pod
+spec:
+  containers:
+  - image: centos:7
+    name: html-generator
+    stdin: true
+    tty: true 
+    volumeMounts:
+    - name: html-volume
+      mountPath: /html    #if a created the file in cont1
+  - image: nginx
+    name: nginx
+    volumeMounts:
+    - name: html-volume
+      mountPath: /usr/share/nginx/html   # was able to see the file from the cont1
+      readOnly: true
+    ports:
+    - containerPort: 80
+      name: http
+      protocol: TCP
+  volumes:
+  - name: html-volume
+    emptyDir: {}   # is using only to share a directory between containers in the same pod
