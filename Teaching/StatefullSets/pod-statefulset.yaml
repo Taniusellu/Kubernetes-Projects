@@ -1,0 +1,48 @@
+# Resource Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuard-sts-svc
+  labels:
+    app: kuard-sts
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None  #headless service, without an IP Address - used specifc resource 
+  selector:
+    app: kuard-sts
+
+
+# Stateful Resource - is not creating without the Service
+---
+apiVersion: apps/v1
+kind: StatefulSet    
+metadata:
+  name: kuard-sts
+spec:
+  serviceName: kuard-sts-svc  # provide service name 
+  replicas: 2
+  template:    # creating the pod
+    metadata:
+      labels:
+        app: kuard-sts
+    spec:
+      containers:
+      - name: kuard
+        image: gcr.io/kuar-demo/kuard-amd64:1
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts:  
+        - name: data
+          mountPath: /data
+  volumeClaimTemplates:   # template for volume claim which is PVC - if you have 2 replica, will create 2 pods with 2 pvc
+  - metadata:
+      name: data
+    spec:
+      resources:
+        requests:
+          storage: 1Gi
+      accessModes:
+      - ReadWriteOnce
