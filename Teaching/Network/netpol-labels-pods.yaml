@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: qa-allow-netpol
+spec:
+  podSelector:
+    matchLabels:
+      env: qa
+  ingress:           #allow connection with pods which match labels the same as netpol
+  - from:
+    - podSelector:
+        matchLabels:
+          env: qa
+
