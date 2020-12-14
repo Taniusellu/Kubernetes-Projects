@@ -1,0 +1,9 @@
+apiVersion: networking.k8s.io/v1  #API Version of my NetPol
+kind: NetworkPolicy      
+metadata:
+  name: default-deny-netpol
+spec:
+  podSelector: {} #wne you don't specify labels, it will specify all the pods
+  policyTypes:    
+  - Ingress      # no one of our pods can talk each other
+ 
