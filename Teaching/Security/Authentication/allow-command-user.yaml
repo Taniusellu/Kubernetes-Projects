@@ -1,0 +1,10 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: service-reader-role
+rules:  # Allowa rules to the service
+- apiGroups: [""]
+  verbs: ["get", "list"] # what do you wanna do 
+  resources: ["services"] # on what resource
+
