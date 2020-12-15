@@ -1,0 +1,16 @@
+  
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: centos-pod-nobody-v1
+  name: centos-pod-nobody-v1
+spec:
+  securityContext:
+    runAsUser: 65534    #you can not specify user name, but you specify user ID
+    fsGroup: 65534      #group ID
+  containers:
+  - image: centos
+    name: centos
+    stdin: true
+    tty: true
