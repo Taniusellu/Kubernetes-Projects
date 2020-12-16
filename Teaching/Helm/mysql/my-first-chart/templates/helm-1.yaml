@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Pod          #which resource you are planning to create
 metadata: 
-  name: {{.Chat.Name}}
+  name: {{.Chart.Name}}
   labels:
     app: {{.Chart.Name}}
     chart: {{.Chart.Name}}-{{.Chart.Version}}
 spec:
   containers:
-  - image: nginx         # tags to an image  :1
-    name: nginx
+    - image: {{.Values.image.repository}}:{{.Values.image.tag}}         # tags to an image  :1
+    name: {{.Values.containername}}
     ports:            # specify ports you need
     - containerPort: 80
       protocol: TCP 
