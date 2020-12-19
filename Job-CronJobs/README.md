@@ -7,7 +7,7 @@ A simple case is to create one Job object in order to reliably run one Pod to co
  if the first Pod fails or is deleted (for example due to a node hardware failure or a node reboot).
 
 You can also use a Job to run multiple Pods in parallel.
-
+ 
  * A CronJob creates Jobs on a repeating schedule.
 
 One CronJob object is like one line of a crontab (cron table) file. It runs a job periodically on a given schedule, written in Cron format.
